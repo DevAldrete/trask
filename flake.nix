@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs?ref=unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-unstable";
     utils.url = "github:numtide/flake-utils";
   };
   outputs = { self, nixpkgs, utils }: utils.lib.eachDefaultSystem (system:
@@ -9,7 +9,7 @@
       common = with pkgs; [ git ];
     in
     {
-      devShell = {
+      devShells = {
         default = pkgs.mkShell {
           buildInputs = common ++ (with pkgs; [
             nodejs_24
